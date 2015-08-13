@@ -19,6 +19,8 @@
 # Parameters:
 #   - $version:
 #         Maven version.
+#   - $source_hash:
+#         Optional MD5 hash of maven tarball, only used if $repo not specified.
 #
 # Requires:
 #   Java package installed.
@@ -30,6 +32,7 @@
 #
 class maven::maven(
   $version = '3.2.5',
+  $source_hash = undef,
   $repo = {
     #url      => 'http://repo1.maven.org/maven2',
     #username => '',
@@ -53,7 +56,8 @@ class maven::maven(
       }
     } else {
       wget::fetch { 'fetch-maven':
-        source      => "http://archive.apache.org/dist/maven/maven-3/${version}/binaries/apache-maven-${version}-bin.tar.gz",
+        source      => "https://archive.apache.org/dist/maven/maven-3/${version}/binaries/apache-maven-${version}-bin.tar.gz",
+        source_hash => $source_hash,
         destination => $archive,
         before      => Exec['maven-untar'],
       }

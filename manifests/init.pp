@@ -22,6 +22,8 @@
 # Parameters:
 #   - $version:
 #         Maven version.
+#   - $source_hash:
+#         Optional MD5 hash of maven tarball, only used if $repo not specified.
 #
 # Requires:
 #   Java package installed.
