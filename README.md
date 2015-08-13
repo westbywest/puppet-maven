@@ -118,7 +118,10 @@ Examples
 
   # Install Maven
   class { "maven::maven":
-    version => "3.2.5", # version to install
+    # version to install
+    version => "3.2.5",
+    # optional MD5 hash of maven tarball from Apache servers, only used if $repo not populated
+    source_hash => "b2d88f02bd3a08a9df1f0b0126ebd8dc",
     # you can get Maven tarball from a Maven repository instead than from Apache servers, optionally with a user/password
     repo => {
       #url => "http://repo.maven.apache.org/maven2",
